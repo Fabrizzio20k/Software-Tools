@@ -23,10 +23,11 @@ export default async function PortalLayout({ children }: PortalLayoutProps) {
     ? session.user.groups.map((group) => group.replace(/^\/+/, "")).join(" · ")
     : "Sin grupo asignado";
   const name = session.user.name ?? "Usuario";
+  const image = session.user.image;
 
   return (
     <main className="portal-shell">
-      <PortalSidebar groups={groups} name={name} />
+      <PortalSidebar groups={groups} image={image} name={name} />
 
       <header className="portal-mobile-header">
         <Link className="portal-identity" href="/apps">

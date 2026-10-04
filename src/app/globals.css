@@ -226,7 +226,9 @@ a:focus-visible, button:focus-visible { outline: 3px solid color-mix(in srgb, va
   .portal-sidebar .portal-navigation-link { justify-content: center; padding: 0; width: 48px; }
   .portal-sidebar.is-expanded .portal-navigation-link { justify-content: flex-start; padding: 0 13px; width: 224px; }
   .portal-account { align-items: center; border-top: 1px solid var(--inverse-divider); display: grid; gap: 9px; grid-template-columns: 46px minmax(0, 1fr); margin-top: auto; padding-top: 18px; position: relative; }
-  .portal-avatar { align-items: center; background: var(--accent); border-radius: 12px; color: var(--ink); display: flex; font-size: .8rem; font-weight: 740; height: 46px; justify-content: center; width: 46px; }
+  .portal-account form { display: contents; }
+  .portal-avatar { align-items: center; background: var(--accent); border-radius: 12px; color: var(--ink); display: flex; font-size: .8rem; font-weight: 740; height: 46px; justify-content: center; overflow: hidden; position: relative; width: 46px; }
+  .portal-avatar-image { object-fit: cover; }
   .portal-account-copy { min-width: 0; }
   .portal-account-copy strong, .portal-account-copy span { display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
   .portal-account-copy strong { color: var(--inverse-text); font-size: .78rem; font-weight: 700; }

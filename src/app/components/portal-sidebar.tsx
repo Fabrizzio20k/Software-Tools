@@ -11,10 +11,11 @@ import { ThemeToggle } from "@/app/components/theme-toggle";
 
 type PortalSidebarProps = {
   groups: string;
+  image?: string | null;
   name: string;
 };
 
-export function PortalSidebar({ groups, name }: PortalSidebarProps) {
+export function PortalSidebar({ groups, image, name }: PortalSidebarProps) {
   const [expanded, setExpanded] = useState(false);
   const reduceMotion = useReducedMotion();
 
@@ -58,7 +59,17 @@ export function PortalSidebar({ groups, name }: PortalSidebarProps) {
 
       <div className="portal-account">
         <div aria-hidden="true" className="portal-avatar">
-          {name.slice(0, 1).toUpperCase()}
+          {image ? (
+            <Image
+              alt=""
+              className="portal-avatar-image"
+              fill
+              sizes="46px"
+              src={image}
+            />
+          ) : (
+            name.slice(0, 1).toUpperCase()
+          )}
         </div>
         <AnimatePresence initial={false}>
           {expanded && (

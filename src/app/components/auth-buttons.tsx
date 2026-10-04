@@ -1,6 +1,6 @@
 "use client";
 
-import { signIn, signOut } from "next-auth/react";
+import { signIn } from "next-auth/react";
 import { SignOutIcon } from "@/app/components/portal-icons";
 
 type AuthButtonsProps = {
@@ -12,15 +12,16 @@ type AuthButtonsProps = {
 export function AuthButtons({ authenticated, className, iconOnly = false }: AuthButtonsProps) {
   if (authenticated) {
     return (
-      <button
-        className={`auth-button auth-button-quiet${className ? ` ${className}` : ""}`}
-        onClick={() => signOut({ callbackUrl: "/" })}
-        aria-label={iconOnly ? "Cerrar sesión" : undefined}
-        title={iconOnly ? "Cerrar sesión" : undefined}
-        type="button"
-      >
-        {iconOnly ? <SignOutIcon className="auth-button-icon" /> : "Cerrar sesión"}
-      </button>
+      <form action="/api/auth/logout" method="post">
+        <button
+          className={`auth-button auth-button-quiet${className ? ` ${className}` : ""}`}
+          aria-label={iconOnly ? "Cerrar sesión" : undefined}
+          title={iconOnly ? "Cerrar sesión" : undefined}
+          type="submit"
+        >
+          {iconOnly ? <SignOutIcon className="auth-button-icon" /> : "Cerrar sesión"}
+        </button>
+      </form>
     );
   }
 
