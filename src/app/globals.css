@@ -144,13 +144,14 @@ a:focus-visible, button:focus-visible { outline: 3px solid color-mix(in srgb, va
 .portal-mobile-actions { align-items: center; display: flex; gap: 8px; }
 .portal-mobile-header .portal-navigation-link { color: var(--inverse-muted); }
 .portal-mobile-header .portal-navigation-link.is-active { color: var(--ink); }
-.portal-mobile-header .auth-button { background: transparent; border-color: var(--inverse-line); }
+.portal-mobile-header .auth-button { background: transparent; border-color: var(--inverse-line); height: 40px; min-height: 40px; padding: 0; width: 40px; }
 .portal-mobile-header .auth-button:hover { background: var(--inverse-hover-wash); border-color: var(--inverse-text); }
+.portal-mobile-header .auth-button-icon { height: 18px; width: 18px; }
 .portal-mobile-header .theme-toggle { background: transparent; border-color: var(--inverse-line); color: var(--inverse-text); }
 .portal-mobile-header .theme-toggle:hover { background: var(--inverse-hover-wash); border-color: var(--inverse-text); }
 .portal-main { display: flex; flex-direction: column; margin: 0 auto; max-width: 1180px; min-height: 100svh; padding: clamp(42px, 7vw, 80px) max(clamp(20px, 6vw, 74px), env(safe-area-inset-right)) calc(clamp(42px, 7vw, 80px) + env(safe-area-inset-bottom)) max(clamp(20px, 6vw, 74px), env(safe-area-inset-left)); }
 .portal-main > .site-footer { border-top: 1px solid var(--line); margin-top: auto; padding-top: 20px; }
-.portal-page { max-width: 920px; }
+.portal-page { max-width: 920px; padding-bottom: clamp(48px, 7vw, 80px); }
 .page-intro { align-items: flex-start; display: flex; gap: 18px; }
 .page-symbol, .empty-state-icon { align-items: center; background: var(--accent); border-radius: 12px; color: var(--ink); display: flex; flex: 0 0 auto; height: 45px; justify-content: center; width: 45px; }
 .page-symbol svg, .empty-state-icon svg { height: 22px; width: 22px; }
