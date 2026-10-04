@@ -7,6 +7,7 @@ import { AuthButtons } from "@/app/components/auth-buttons";
 import { PortalNavigation } from "@/app/components/portal-navigation";
 import { PortalSidebar } from "@/app/components/portal-sidebar";
 import { SiteFooter } from "@/app/components/site-footer";
+import { ThemeToggle } from "@/app/components/theme-toggle";
 import { authOptions } from "@/lib/auth";
 
 type PortalLayoutProps = { children: ReactNode };
@@ -32,7 +33,10 @@ export default async function PortalLayout({ children }: PortalLayoutProps) {
           <Image alt="" className="portal-brand-icon" height={32} src="/icons/code.png" width={32} />
           <span>ING Software</span>
         </Link>
+        <div className="portal-mobile-actions">
+          <ThemeToggle />
           <AuthButtons authenticated iconOnly />
+        </div>
         <PortalNavigation />
       </header>
 

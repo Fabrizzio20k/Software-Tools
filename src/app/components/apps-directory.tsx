@@ -9,6 +9,7 @@ const apps = [
   { description: "Calidad, seguridad y mantenibilidad del código.", href: "https://sonarqube.ingsoftware.lat/sessions/init/saml?return_to=/", image: "/images/sonar.webp", name: "SonarQube", tone: "sonar" },
   { description: "Planificación y seguimiento del trabajo en equipo.", href: "https://openproject.ingsoftware.lat", image: "/images/openproject.webp", name: "OpenProject", tone: "openproject" },
   { description: "Automatización para integración y entrega continua.", href: "https://jenkins.ingsoftware.lat", image: "/images/jenkins.webp", name: "Jenkins", tone: "jenkins" },
+  { description: "Únete al grupo general para conversar y recibir novedades del curso.", href: "https://discord.com", image: "/images/discord.webp", name: "Discord", tone: "discord" },
 ];
 
 type View = "grid" | "list";

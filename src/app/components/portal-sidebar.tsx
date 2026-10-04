@@ -7,6 +7,7 @@ import { useState } from "react";
 import { AuthButtons } from "@/app/components/auth-buttons";
 import { MenuIcon } from "@/app/components/portal-icons";
 import { PortalNavigation } from "@/app/components/portal-navigation";
+import { ThemeToggle } from "@/app/components/theme-toggle";
 
 type PortalSidebarProps = {
   groups: string;
@@ -73,6 +74,7 @@ export function PortalSidebar({ groups, name }: PortalSidebarProps) {
             </motion.div>
           )}
         </AnimatePresence>
+        <ThemeToggle />
         <AuthButtons authenticated iconOnly={!expanded} />
       </div>
     </motion.aside>

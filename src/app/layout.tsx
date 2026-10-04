@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import "./globals.css";
 
 export const metadata: Metadata = {
   title: "Portal de Ingeniería de Software",
   description: "Acceso con Keycloak",
   icons: {
-    icon: "/icons/code.png",
+    icon: "/icons/icon.ico",
   },
 };
 
@@ -14,8 +15,14 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     <html
       lang="es"
       className="h-full antialiased"
+      suppressHydrationWarning
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col">
+        {children}
+        <Script id="theme-preference" strategy="beforeInteractive">
+          {`try { const storedTheme = localStorage.getItem("theme"); const theme = storedTheme === "light" || storedTheme === "dark" ? storedTheme : matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light"; document.documentElement.dataset.theme = theme; } catch {}`}
+        </Script>
+      </body>
     </html>
   );
 }
