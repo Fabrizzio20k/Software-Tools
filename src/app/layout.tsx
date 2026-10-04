@@ -5,6 +5,13 @@ import "./globals.css";
 export const metadata: Metadata = {
   title: "Portal de Ingeniería de Software",
   description: "Acceso con Keycloak",
+  robots: {
+    index: false,
+    follow: false,
+    noarchive: true,
+    nosnippet: true,
+    noimageindex: true,
+  },
   icons: {
     icon: "/icons/icon.ico",
   },
