@@ -2,6 +2,7 @@
 
 type ThemeToggleProps = {
   className?: string;
+  expanded?: boolean;
 };
 
 function SunIcon() {
@@ -21,7 +22,7 @@ function MoonIcon() {
   );
 }
 
-export function ThemeToggle({ className }: ThemeToggleProps) {
+export function ThemeToggle({ className, expanded = false }: ThemeToggleProps) {
   function toggleTheme() {
     const currentTheme = document.documentElement.dataset.theme === "dark"
       ? "dark"
@@ -43,6 +44,7 @@ export function ThemeToggle({ className }: ThemeToggleProps) {
     >
       <span className="theme-toggle-moon"><MoonIcon /></span>
       <span className="theme-toggle-sun"><SunIcon /></span>
+      {expanded && <span className="sidebar-action-label">Cambiar tema</span>}
     </button>
   );
 }

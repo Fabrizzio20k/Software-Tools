@@ -4,6 +4,7 @@ import Link from "next/link";
 import { getServerSession } from "next-auth";
 import { redirect } from "next/navigation";
 import { AuthButtons } from "@/app/components/auth-buttons";
+import { NotificationCenter } from "@/app/components/notification-center";
 import { PortalNavigation } from "@/app/components/portal-navigation";
 import { PortalSidebar } from "@/app/components/portal-sidebar";
 import { SiteFooter } from "@/app/components/site-footer";
@@ -35,6 +36,7 @@ export default async function PortalLayout({ children }: PortalLayoutProps) {
           <span>ING Software</span>
         </Link>
         <div className="portal-mobile-actions">
+          <NotificationCenter />
           <ThemeToggle />
           <AuthButtons authenticated iconOnly />
         </div>

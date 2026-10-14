@@ -19,7 +19,8 @@ export function AuthButtons({ authenticated, className, iconOnly = false }: Auth
           title={iconOnly ? "Cerrar sesión" : undefined}
           type="submit"
         >
-          {iconOnly ? <SignOutIcon className="auth-button-icon" /> : "Cerrar sesión"}
+          <SignOutIcon className="auth-button-icon" />
+          {!iconOnly && <span>Cerrar sesión</span>}
         </button>
       </form>
     );

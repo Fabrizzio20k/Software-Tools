@@ -5,6 +5,7 @@ import Link from "next/link";
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import { useState } from "react";
 import { AuthButtons } from "@/app/components/auth-buttons";
+import { NotificationCenter } from "@/app/components/notification-center";
 import { MenuIcon } from "@/app/components/portal-icons";
 import { PortalNavigation } from "@/app/components/portal-navigation";
 import { ThemeToggle } from "@/app/components/theme-toggle";
@@ -20,13 +21,28 @@ export function PortalSidebar({ groups, image, name }: PortalSidebarProps) {
   const reduceMotion = useReducedMotion();
 
   return (
-    <motion.aside
-      animate={{ width: expanded ? 252 : 76 }}
-      className={`portal-sidebar${expanded ? " is-expanded" : ""}`}
-      transition={reduceMotion ? { duration: 0 } : { bounce: 0, duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-    >
-      <div className="portal-sidebar-glow" />
-      <div className="portal-sidebar-top">
+    <>
+      <AnimatePresence>
+        {expanded && (
+          <motion.button
+            animate={{ opacity: 1 }}
+            aria-label="Cerrar menú"
+            className="sidebar-backdrop"
+            exit={{ opacity: 0 }}
+            initial={{ opacity: 0 }}
+            onClick={() => setExpanded(false)}
+            transition={reduceMotion ? { duration: 0 } : { duration: 0.3, ease: "easeOut" }}
+            type="button"
+          />
+        )}
+      </AnimatePresence>
+      <motion.aside
+        animate={{ width: expanded ? 252 : 76 }}
+        className={`portal-sidebar${expanded ? " is-expanded" : ""}`}
+        transition={reduceMotion ? { duration: 0 } : { bounce: 0, duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+      >
+        <div className="portal-sidebar-glow" />
+        <div className="portal-sidebar-top">
         <button
           aria-expanded={expanded}
           aria-label={expanded ? "Contraer menú" : "Expandir menú"}
@@ -51,13 +67,13 @@ export function PortalSidebar({ groups, image, name }: PortalSidebarProps) {
             )}
           </AnimatePresence>
         </Link>
-      </div>
+        </div>
 
-      <div className="sidebar-navigation-wrap">
-        <PortalNavigation expanded={expanded} />
-      </div>
+        <div className="sidebar-navigation-wrap">
+          <PortalNavigation expanded={expanded} />
+        </div>
 
-      <div className="portal-account">
+        <div className="portal-account">
         <div aria-hidden="true" className="portal-avatar">
           {image ? (
             <Image
@@ -85,9 +101,11 @@ export function PortalSidebar({ groups, image, name }: PortalSidebarProps) {
             </motion.div>
           )}
         </AnimatePresence>
-        <ThemeToggle />
+        <NotificationCenter expanded={expanded} sidebar />
+        <ThemeToggle expanded={expanded} />
         <AuthButtons authenticated iconOnly={!expanded} />
-      </div>
-    </motion.aside>
+        </div>
+      </motion.aside>
+    </>
   );
 }
