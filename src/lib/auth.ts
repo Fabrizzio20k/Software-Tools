@@ -68,6 +68,7 @@ export const authOptions: NextAuthOptions = {
     },
     session({ session, token }) {
       session.user.groups = token.groups ?? [];
+      session.user.id = token.sub;
       return session;
     },
   },

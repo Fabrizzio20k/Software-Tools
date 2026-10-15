@@ -14,9 +14,10 @@ type PortalSidebarProps = {
   groups: string;
   image?: string | null;
   name: string;
+  isAdmin: boolean;
 };
 
-export function PortalSidebar({ groups, image, name }: PortalSidebarProps) {
+export function PortalSidebar({ groups, image, name, isAdmin }: PortalSidebarProps) {
   const [expanded, setExpanded] = useState(false);
   const reduceMotion = useReducedMotion();
 
@@ -71,7 +72,7 @@ export function PortalSidebar({ groups, image, name }: PortalSidebarProps) {
         </div>
 
         <div className="sidebar-navigation-wrap">
-          <PortalNavigation expanded={expanded} reducedMotion={reduceMotion ?? false} />
+          <PortalNavigation expanded={expanded} reducedMotion={reduceMotion ?? false} showAdmin={isAdmin} />
         </div>
 
         <div className="portal-account">

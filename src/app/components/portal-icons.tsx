@@ -39,6 +39,15 @@ export function HelpIcon({ className }: IconProps) {
   );
 }
 
+export function UsersIcon({ className }: IconProps) {
+  return (
+    <svg aria-hidden="true" className={className} fill="none" viewBox="0 0 24 24">
+      <circle cx="9" cy="8" r="3" stroke="currentColor" strokeWidth="1.8" />
+      <path d="M3.5 19v-1.5A4.5 4.5 0 0 1 8 13h2a4.5 4.5 0 0 1 4.5 4.5V19H3.5ZM16.5 5.3a3 3 0 0 1 0 5.5M17 13.3a4.5 4.5 0 0 1 3.5 4.4V19h-3" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.8" />
+    </svg>
+  );
+}
+
 export function ArrowUpRightIcon({ className }: IconProps) {
   return (
     <svg aria-hidden="true" className={className} fill="none" viewBox="0 0 24 24">

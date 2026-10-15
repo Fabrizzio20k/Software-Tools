@@ -25,10 +25,11 @@ export default async function PortalLayout({ children }: PortalLayoutProps) {
     : "Sin grupo asignado";
   const name = session.user.name ?? "Usuario";
   const image = session.user.image;
+  const isAdmin = session.user.groups.includes("/Admins");
 
   return (
     <main className="portal-shell">
-      <PortalSidebar groups={groups} image={image} name={name} />
+      <PortalSidebar groups={groups} image={image} isAdmin={isAdmin} name={name} />
 
       <header className="portal-mobile-header">
         <Link className="portal-identity" href="/apps">
@@ -40,7 +41,7 @@ export default async function PortalLayout({ children }: PortalLayoutProps) {
           <ThemeToggle />
           <AuthButtons authenticated iconOnly />
         </div>
-        <PortalNavigation />
+        <PortalNavigation showAdmin={isAdmin} />
       </header>
 
         <div className="portal-main">
