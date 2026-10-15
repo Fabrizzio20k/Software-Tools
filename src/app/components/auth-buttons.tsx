@@ -7,9 +7,10 @@ type AuthButtonsProps = {
   authenticated: boolean;
   className?: string;
   iconOnly?: boolean;
+  persistentLabel?: boolean;
 };
 
-export function AuthButtons({ authenticated, className, iconOnly = false }: AuthButtonsProps) {
+export function AuthButtons({ authenticated, className, iconOnly = false, persistentLabel = false }: AuthButtonsProps) {
   if (authenticated) {
     return (
       <form action="/api/auth/logout" method="post">
@@ -20,7 +21,7 @@ export function AuthButtons({ authenticated, className, iconOnly = false }: Auth
           type="submit"
         >
           <SignOutIcon className="auth-button-icon" />
-          {!iconOnly && <span>Cerrar sesión</span>}
+          {(persistentLabel || !iconOnly) && <span className={`auth-button-label${persistentLabel ? " auth-button-label-persistent" : ""}`}>Cerrar sesión</span>}
         </button>
       </form>
     );

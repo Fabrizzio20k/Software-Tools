@@ -13,9 +13,10 @@ const navigation = [
 
 type PortalNavigationProps = {
   expanded?: boolean;
+  reducedMotion?: boolean;
 };
 
-export function PortalNavigation({ expanded = true }: PortalNavigationProps) {
+export function PortalNavigation({ expanded = true, reducedMotion = false }: PortalNavigationProps) {
   const pathname = usePathname();
 
   return (
@@ -41,11 +42,11 @@ export function PortalNavigation({ expanded = true }: PortalNavigationProps) {
             <AnimatePresence initial={false}>
               {expanded && (
                 <motion.span
-                  animate={{ opacity: 1, width: "auto" }}
+                  animate={{ width: "auto" }}
                   className="portal-navigation-label"
-                  exit={{ opacity: 0, width: 0 }}
-                  initial={{ opacity: 0, width: 0 }}
-                  transition={{ duration: 0.18, ease: "easeOut" }}
+                  exit={{ width: 0 }}
+                  initial={{ width: 0 }}
+                  transition={reducedMotion ? { duration: 0 } : { delay: expanded ? 0.08 : 0, duration: 0.22, ease: [0.22, 1, 0.36, 1] }}
                 >
                   {label}
                 </motion.span>

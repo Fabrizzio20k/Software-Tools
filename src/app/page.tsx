@@ -1,8 +1,7 @@
-import Link from "next/link";
 import Image from "next/image";
 import { getServerSession } from "next-auth";
+import { redirect } from "next/navigation";
 import { AuthButtons } from "@/app/components/auth-buttons";
-import { ArrowUpRightIcon } from "@/app/components/portal-icons";
 import { PageReveal } from "@/app/components/page-reveal";
 import { SiteFooter } from "@/app/components/site-footer";
 import { ThemeToggle } from "@/app/components/theme-toggle";
@@ -12,7 +11,8 @@ export const dynamic = "force-dynamic";
 
 export default async function Home() {
   const session = await getServerSession(authOptions);
-  const authenticated = Boolean(session?.user);
+
+  if (session?.user) redirect("/apps");
 
   return (
     <main className="welcome-page">
@@ -54,12 +54,7 @@ export default async function Home() {
               curso.
             </p>
             <div className="welcome-actions">
-              <AuthButtons authenticated={authenticated} />
-              {authenticated && (
-                <Link className="text-link" href="/apps">
-                  Abrir mi espacio <ArrowUpRightIcon className="inline-icon" />
-                </Link>
-              )}
+              <AuthButtons authenticated={false} />
             </div>
           </div>
           <SiteFooter />

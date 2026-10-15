@@ -3,6 +3,7 @@
 type ThemeToggleProps = {
   className?: string;
   expanded?: boolean;
+  persistentLabel?: boolean;
 };
 
 function SunIcon() {
@@ -22,7 +23,7 @@ function MoonIcon() {
   );
 }
 
-export function ThemeToggle({ className, expanded = false }: ThemeToggleProps) {
+export function ThemeToggle({ className, expanded = false, persistentLabel = false }: ThemeToggleProps) {
   function toggleTheme() {
     const currentTheme = document.documentElement.dataset.theme === "dark"
       ? "dark"
@@ -44,7 +45,7 @@ export function ThemeToggle({ className, expanded = false }: ThemeToggleProps) {
     >
       <span className="theme-toggle-moon"><MoonIcon /></span>
       <span className="theme-toggle-sun"><SunIcon /></span>
-      {expanded && <span className="sidebar-action-label">Cambiar tema</span>}
+      {(persistentLabel || expanded) && <span className={`sidebar-action-label${persistentLabel ? " theme-toggle-label-persistent" : ""}`}>Cambiar tema</span>}
     </button>
   );
 }

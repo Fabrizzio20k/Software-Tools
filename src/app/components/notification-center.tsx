@@ -6,10 +6,11 @@ import { BellIcon } from "@/app/components/portal-icons";
 
 type NotificationCenterProps = {
   expanded?: boolean;
+  reducedMotion?: boolean;
   sidebar?: boolean;
 };
 
-export function NotificationCenter({ expanded = false, sidebar = false }: NotificationCenterProps) {
+export function NotificationCenter({ expanded = false, reducedMotion = false, sidebar = false }: NotificationCenterProps) {
   const [open, setOpen] = useState(false);
   const panelId = useId();
   const containerRef = useRef<HTMLDivElement>(null);
@@ -44,7 +45,19 @@ export function NotificationCenter({ expanded = false, sidebar = false }: Notifi
         type="button"
       >
         <BellIcon />
-        {expanded && <span className="sidebar-action-label">Notificaciones</span>}
+        <AnimatePresence initial={false}>
+          {expanded && (
+            <motion.span
+              animate={{ width: "auto" }}
+              className="sidebar-action-label sidebar-reveal-label"
+              exit={{ width: 0 }}
+              initial={{ width: 0 }}
+              transition={reducedMotion ? { duration: 0 } : { delay: expanded ? 0.08 : 0, duration: 0.22, ease: [0.22, 1, 0.36, 1] }}
+            >
+              Notificaciones
+            </motion.span>
+          )}
+        </AnimatePresence>
       </button>
       <AnimatePresence>
         {open && (

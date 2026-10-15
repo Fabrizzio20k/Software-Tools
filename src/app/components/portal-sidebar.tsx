@@ -57,10 +57,11 @@ export function PortalSidebar({ groups, image, name }: PortalSidebarProps) {
             <AnimatePresence initial={false}>
               {expanded && (
                 <motion.span
-                  animate={{ opacity: 1, x: 0 }}
-                  exit={{ opacity: 0, x: -6 }}
-                  initial={{ opacity: 0, x: -6 }}
-                  transition={{ duration: 0.16 }}
+                animate={{ width: "auto" }}
+                className="sidebar-reveal-label"
+                exit={{ width: 0 }}
+                initial={{ width: 0 }}
+                  transition={reduceMotion ? { duration: 0 } : { delay: expanded ? 0.08 : 0, duration: 0.22, ease: [0.22, 1, 0.36, 1] }}
                 >
                   ING Software
                 </motion.span>
@@ -70,7 +71,7 @@ export function PortalSidebar({ groups, image, name }: PortalSidebarProps) {
         </div>
 
         <div className="sidebar-navigation-wrap">
-          <PortalNavigation expanded={expanded} />
+          <PortalNavigation expanded={expanded} reducedMotion={reduceMotion ?? false} />
         </div>
 
         <div className="portal-account">
@@ -90,20 +91,20 @@ export function PortalSidebar({ groups, image, name }: PortalSidebarProps) {
           <AnimatePresence initial={false}>
             {expanded && (
               <motion.div
-                animate={{ opacity: 1, x: 0 }}
+                animate={{ width: "auto" }}
                 className="portal-account-copy"
-                exit={{ opacity: 0, x: -6 }}
-                initial={{ opacity: 0, x: -6 }}
-                transition={{ duration: 0.16 }}
+                exit={{ width: 0 }}
+                initial={{ width: 0 }}
+                transition={reduceMotion ? { duration: 0 } : { delay: expanded ? 0.08 : 0, duration: 0.22, ease: [0.22, 1, 0.36, 1] }}
               >
                 <strong>{name}</strong>
                 <span>{groups}</span>
               </motion.div>
             )}
           </AnimatePresence>
-          <NotificationCenter expanded={expanded} sidebar />
-          <ThemeToggle expanded={expanded} />
-          <AuthButtons authenticated iconOnly={!expanded} />
+          <NotificationCenter expanded={expanded} reducedMotion={reduceMotion ?? false} sidebar />
+          <ThemeToggle expanded={expanded} persistentLabel />
+          <AuthButtons authenticated iconOnly={!expanded} persistentLabel />
         </div>
       </motion.aside>
     </>
