@@ -48,6 +48,15 @@ export function UsersIcon({ className }: IconProps) {
   );
 }
 
+export function SettingsIcon({ className }: IconProps) {
+  return (
+    <svg aria-hidden="true" className={className} fill="none" viewBox="0 0 24 24">
+      <path d="M10.4 3h3.2l.55 2.15c.56.18 1.08.4 1.57.68l1.93-1.13 2.26 2.26-1.13 1.93c.28.49.5 1.01.68 1.57L21.6 11v3l-2.15.55c-.18.56-.4 1.08-.68 1.57l1.13 1.93-2.26 2.26-1.93-1.13c-.49.28-1.01.5-1.57.68L13.6 22h-3.2l-.55-2.15c-.56-.18-1.08-.4-1.57-.68l-1.93 1.13-2.26-2.26 1.13-1.93c-.28-.49-.5-1.01-.68-1.57L2.4 14v-3l2.15-.55c.18-.56.4-1.08.68-1.57L4.1 6.95l2.26-2.26 1.93 1.13c.49-.28 1.01-.5 1.57-.68L10.4 3Z" stroke="currentColor" strokeLinejoin="round" strokeWidth="1.5" />
+      <circle cx="12" cy="12.5" r="3.25" stroke="currentColor" strokeWidth="1.5" />
+    </svg>
+  );
+}
+
 export function ArrowUpRightIcon({ className }: IconProps) {
   return (
     <svg aria-hidden="true" className={className} fill="none" viewBox="0 0 24 24">

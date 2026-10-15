@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { AnimatePresence, motion } from "motion/react";
-import { AppsIcon, BlogIcon, HelpIcon, UsersIcon } from "@/app/components/portal-icons";
+import { AppsIcon, BlogIcon, HelpIcon, SettingsIcon } from "@/app/components/portal-icons";
 
 const navigation = [
   { href: "/apps", label: "Apps", Icon: AppsIcon },
@@ -19,12 +19,12 @@ type PortalNavigationProps = {
 
 export function PortalNavigation({ expanded = true, reducedMotion = false, showAdmin = false }: PortalNavigationProps) {
   const pathname = usePathname();
-  const links = showAdmin ? [...navigation, { href: "/admin/users", label: "Usuarios", Icon: UsersIcon }] : navigation;
+  const links = showAdmin ? [...navigation, { href: "/admin", label: "Administración", Icon: SettingsIcon }] : navigation;
 
   return (
     <nav aria-label="Navegación principal" className="portal-navigation">
       {links.map(({ href, label, Icon }) => {
-        const active = pathname === href;
+        const active = pathname === href || (href === "/admin" && pathname.startsWith("/admin/"));
 
         return (
           <Link

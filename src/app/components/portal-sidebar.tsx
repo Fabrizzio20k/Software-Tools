@@ -82,6 +82,7 @@ export function PortalSidebar({ groups, image, name, isAdmin }: PortalSidebarPro
                 alt=""
                 className="portal-avatar-image"
                 fill
+                loading="eager"
                 sizes="46px"
                 src={image}
               />
